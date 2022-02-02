@@ -1,39 +1,96 @@
 import logo from '../../assets/MyWallet.svg';
-import styled from 'styled-components';
 import { Form, Input } from '../../components/FormComponents';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { required, maxLength, pattern } from '../../utils/reactHookFormConfig';
+import { services } from '../../services/services';
+import { ThreeDots } from 'react-loader-spinner';
+import 'react-toastify/dist/ReactToastify.css';
+import { toastError, toastSuccess } from '../../components/toasts';
+import StyledLink from '../../components/StyledLink';
+import Button from '../../components/Button';
+import AuthContext from '../../contexts/AuthContext';
+import SiteLogo from '../../components/SiteLogo';
 
 export default function Login() {
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const { auth, login } = useContext(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+
+  useEffect(() => {
+    if (auth) navigate('/balance');
+  }, [auth, navigate]);
+
+  async function submitForm(formData) {
+    try {
+      setIsLoading(true);
+
+      const { data: token } = await services.login({ ...formData });
+      setIsLoading(false);
+
+      login(token);
+
+      toastSuccess('Entrando...');
+      setTimeout(() => {
+        navigate('/balance');
+      }, 3000);
+    } catch (error) {
+      setIsLoading(false);
+      toastError('Usuário e/ou senha errados');
+    }
+  }
+  console.log(auth);
+
   return (
     <>
-      <StyledImg src={logo} alt='site logo' />
-      <Form onSubmit={() => alert('A')}>
+      <SiteLogo src={logo} alt='site logo' />
+      <Form onSubmit={handleSubmit((formData) => submitForm(formData))}>
+        <p>{errors?.name?.message}</p>
         <Input
-          type='email'
-          placeholder='email'
-          name='email'
-          // onChange={handleChange}
-          // value={formData.password}
-          // disabled={isLoading}
+          type='text'
+          placeholder='Email'
+          disabled={isLoading}
           autoComplete='off'
-          required
+          error={errors?.email?.message ? true : false}
+          {...register('email', {
+            required,
+            maxLength,
+            pattern,
+          })}
         />
+        <p>{errors?.email?.message}</p>
 
         <Input
           type='password'
-          placeholder='senha'
-          name='password'
-          // onChange={handleChange}
-          // value={formData.password}
-          // disabled={isLoading}
-          required
+          placeholder='Senha'
+          error={errors?.password?.message ? true : false}
+          {...register('password', {
+            required,
+          })}
+          disabled={isLoading}
         />
+        <p>{errors?.password?.message}</p>
+
+        <Button type='submit'>
+          {isLoading ? (
+            <ThreeDots color='#FFFFFF' height={50} width={50} />
+          ) : (
+            'Entrar'
+          )}
+        </Button>
       </Form>
+      <StyledLink to='/signup'>Primeira vez? Cadastre-se!</StyledLink>
     </>
   );
 }
-
-const StyledImg = styled.img`
-  width: 147px;
-  height: 50px;
-  margin: 0 auto;
-`;

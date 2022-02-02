@@ -6,11 +6,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toastError, toastSuccess } from '../../components/toasts';
 import StyledLink from '../../components/StyledLink';
 import logo from '../../assets/MyWallet.svg';
-import styled from 'styled-components';
 import { Form, Input } from '../../components/FormComponents';
 import Button from '../../components/Button';
 import { services } from '../../services/services';
-import { required, maxLength, minLength, pattern } from '../../utils/reactHookFormConfig';
+import {
+  required,
+  maxLength,
+  minLength,
+  pattern,
+} from '../../utils/reactHookFormConfig';
+import SiteLogo from '../../components/SiteLogo';
 
 export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,21 +27,21 @@ export default function SignUp() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: 'teste',
-      email: 'teste@teste.com',
-      password: 'asdfasdf',
-      confirmPassword: 'asdfasdf',
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     },
   });
 
   async function submitForm(formData) {
     try {
       setIsLoading(true);
-      const response = await services.signUp({ ...formData });
+      await services.signUp({ ...formData });
       setIsLoading(false);
-      toastSuccess('Usuário criado! Entrando no seu saldo...');
+      toastSuccess('Usuário criado! Entrando na página de login...');
       setTimeout(() => {
-        navigate('/balance');
+        navigate('/');
       }, 3000);
     } catch (error) {
       setIsLoading(false);
@@ -48,7 +53,7 @@ export default function SignUp() {
 
   return (
     <>
-      <StyledImg src={logo} alt='site logo' />
+      <SiteLogo src={logo} alt='site logo' />
       <Form onSubmit={handleSubmit((formData) => submitForm(formData))}>
         <Input
           type='text'
@@ -102,16 +107,14 @@ export default function SignUp() {
         />
         <p>{errors?.confirmPassword?.message}</p>
         <Button type='submit'>
-          {isLoading ? <ThreeDots color='#FFFFFF' height={50} width={50} /> : 'Cadastrar'}
+          {isLoading ? (
+            <ThreeDots color='#FFFFFF' height={50} width={50} />
+          ) : (
+            'Cadastrar'
+          )}
         </Button>
       </Form>
       <StyledLink to='/'>Já tem uma conta? Entre agora!</StyledLink>
     </>
   );
 }
-
-const StyledImg = styled.img`
-  width: 147px;
-  height: 50px;
-  margin: 0 auto;
-`;
