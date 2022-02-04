@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ThreeDots } from 'react-loader-spinner';
@@ -16,10 +16,12 @@ import {
   pattern,
 } from '../../utils/reactHookFormConfig';
 import SiteLogo from '../../components/SiteLogo';
+import AuthContext from '../../contexts/AuthContext.js';
 
 export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { logout } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -33,6 +35,8 @@ export default function SignUp() {
       confirmPassword: '',
     },
   });
+
+  if (localStorage.getItem('auth')) logout();
 
   async function submitForm(formData) {
     try {

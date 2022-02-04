@@ -3,11 +3,11 @@ import { Form, Input } from '../../components/FormComponents';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { required, maxLength, pattern } from '../../utils/reactHookFormConfig';
-import { services } from '../../services/services';
 import { ThreeDots } from 'react-loader-spinner';
 import 'react-toastify/dist/ReactToastify.css';
-import { toastError, toastSuccess } from '../../components/toasts';
+import { required, maxLength, pattern } from '../../utils/reactHookFormConfig';
+import { services } from '../../services/services';
+import { toastError } from '../../components/toasts';
 import StyledLink from '../../components/StyledLink';
 import Button from '../../components/Button';
 import AuthContext from '../../contexts/AuthContext';
@@ -29,7 +29,7 @@ export default function Login() {
   });
 
   useEffect(() => {
-    if (auth) navigate('/balance');
+    if (auth) navigate('/transactions');
   }, [auth, navigate]);
 
   async function submitForm(formData) {
@@ -37,20 +37,18 @@ export default function Login() {
       setIsLoading(true);
 
       const { data: token } = await services.login({ ...formData });
-      setIsLoading(false);
 
       login(token);
 
-      toastSuccess('Entrando...');
       setTimeout(() => {
-        navigate('/balance');
+        setIsLoading(false);
+        navigate('/transactions');
       }, 3000);
     } catch (error) {
       setIsLoading(false);
       toastError('Usuário e/ou senha errados');
     }
   }
-  console.log(auth);
 
   return (
     <>
