@@ -66,6 +66,13 @@ const Entry = styled.div`
   .value {
     color: ${(props) => (props.positive ? '#03AC00' : '#C70000')};
     position: absolute;
+    right: 15px;
+  }
+
+  .delete {
+    color: #c6c6c6;
+    font: 400 16px 'raleway';
+    position: absolute;
     right: 0;
   }
 `;

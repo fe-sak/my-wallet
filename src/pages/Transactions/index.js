@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../contexts/AuthContext.js';
 import { services } from '../../services/services.js';
 import logoutIcon from '../../assets/logoutIcon.svg';
-import { toastSuccess } from '../../components/toasts.js';
+import { toastError, toastSuccess } from '../../components/toasts.js';
 import { useNavigate } from 'react-router-dom';
 import formatToMoney from '../../utils/formatToMoney.js';
 import {
@@ -29,20 +29,31 @@ export default function Transactions() {
       balanceValue += transaction.value;
     });
 
+  async function getUser() {
+    const res = await services.getUser(auth);
+    setBalance({ ...res.data });
+  }
   useEffect(() => {
-    async function getUser() {
-      const res = await services.getUser(auth);
-      setBalance({ ...res.data });
-    }
     getUser();
-  }, [auth]);
+  }, []);
 
   function exit() {
-    toastSuccess('Saindo...', 2300);
+    toastSuccess('Saindo...');
     setTimeout(() => {
       logout();
       navigate('/');
-    }, 3000);
+    }, 2000);
+  }
+
+  async function deleteTransaction(id) {
+    try {
+      await services.deleteTransaction(auth, id);
+
+      getUser();
+    } catch (error) {
+      console.log(error.response);
+      toastError(error.response.data);
+    }
   }
   console.log(balance);
 
@@ -69,6 +80,12 @@ export default function Transactions() {
                   <span className='description'>{transaction.description}</span>
                   <span className='value'>
                     {formatToMoney(transaction.value)}
+                  </span>
+                  <span
+                    className='delete'
+                    onClick={() => deleteTransaction(transaction._id)}
+                  >
+                    x
                   </span>
                 </Entry>
               ))}

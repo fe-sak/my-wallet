@@ -29,4 +29,16 @@ function addExpense(token, body) {
   return axios.post(`${BASE_URL}/expense`, body, config);
 }
 
-export const services = { signUp, login, getUser, addIncome, addExpense };
+function deleteTransaction(token, id) {
+  const config = createConfig(token);
+  return axios.delete(`${BASE_URL}/transactions/${id}`, config);
+}
+
+export const services = {
+  signUp,
+  login,
+  getUser,
+  addIncome,
+  addExpense,
+  deleteTransaction,
+};
