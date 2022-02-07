@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import AuthContext from '../../contexts/AuthContext.js';
 import { services } from '../../services/services.js';
 import logoutIcon from '../../assets/logoutIcon.svg';
@@ -29,13 +29,14 @@ export default function Transactions() {
       balanceValue += transaction.value;
     });
 
-  async function getUser() {
+  const getUser = useCallback(async () => {
     const res = await services.getUser(auth);
     setBalance({ ...res.data });
-  }
+  }, [auth]);
+
   useEffect(() => {
     getUser();
-  }, []);
+  }, [getUser]);
 
   function exit() {
     toastSuccess('Saindo...');
