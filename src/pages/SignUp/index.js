@@ -3,11 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ThreeDots } from 'react-loader-spinner';
 import 'react-toastify/dist/ReactToastify.css';
-import { toastError, toastSuccess } from '../../components/toasts';
-import StyledLink from '../../components/StyledLink';
 import logo from '../../assets/MyWallet.svg';
-import { Form, Input } from '../../components/FormComponents';
-import Button from '../../components/Button';
+import AuthContext from '../../contexts/AuthContext.js';
 import { services } from '../../services/services';
 import {
   required,
@@ -15,8 +12,15 @@ import {
   minLength,
   pattern,
 } from '../../utils/reactHookFormConfig';
-import SiteLogo from '../../components/SiteLogo';
-import AuthContext from '../../contexts/AuthContext.js';
+import {
+  Button,
+  SiteLogo,
+  StyledLink,
+  Form,
+  Input,
+  toastError,
+  toastSuccess,
+} from '../../components';
 
 export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false);

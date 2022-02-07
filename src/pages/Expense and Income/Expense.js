@@ -1,16 +1,12 @@
-import { useForm } from 'react-hook-form';
-import Form from '../../components/FormComponents/Form.js';
-import Input from '../../components/FormComponents/Input.js';
-import Header from '../../components/Header.js';
-import { Container, HeaderSpan } from './style.js';
-import { required, maxLength } from '../../utils/reactHookFormConfig';
 import { useContext, useState } from 'react';
-import AuthContext from '../../contexts/AuthContext.js';
 import { useNavigate } from 'react-router-dom';
-import { toastError } from '../../components/toasts.js';
-import { services } from '../../services/services.js';
+import { useForm } from 'react-hook-form';
+import { required, maxLength } from '../../utils/reactHookFormConfig';
 import { ThreeDots } from 'react-loader-spinner';
-import Button from '../../components/Button.js';
+import AuthContext from '../../contexts/AuthContext.js';
+import { services } from '../../services/services.js';
+import { Container, HeaderSpan } from './style.js';
+import { Header, Button, Form, Input, toastError } from '../../components';
 
 export default function Expense() {
   const [isLoading, setIsLoading] = useState(false);

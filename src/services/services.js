@@ -34,6 +34,11 @@ function deleteTransaction(token, id) {
   return axios.delete(`${BASE_URL}/transactions/${id}`, config);
 }
 
+function editTransaction(token, id, body) {
+  const config = createConfig(token);
+  return axios.put(`${BASE_URL}/transactions/edit/${id}`, body, config);
+}
+
 export const services = {
   signUp,
   login,
@@ -41,4 +46,5 @@ export const services = {
   addIncome,
   addExpense,
   deleteTransaction,
+  editTransaction,
 };

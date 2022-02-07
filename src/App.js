@@ -9,6 +9,9 @@ import { AuthProvider } from './contexts/AuthContext';
 import Transactions from './pages/Transactions';
 import Income from './pages/Expense and Income/Income';
 import Expense from './pages/Expense and Income/Expense';
+import EditExpense from './pages/Edit Pages/Expense.js';
+import EditIncome from './pages/Edit Pages/Income.js';
+
 export default function App() {
   return (
     <AuthProvider>
@@ -20,6 +23,8 @@ export default function App() {
             <Route path='/transactions' element={<Transactions />} />
             <Route path='/income' element={<Income />} />
             <Route path='/expense' element={<Expense />} />
+            <Route path='/income/edit/:id' element={<EditIncome />} />
+            <Route path='/expense/edit/:id' element={<EditExpense />} />
           </Routes>
         </PageContainer>
         <ToastContainer />

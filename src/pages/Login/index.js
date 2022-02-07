@@ -1,17 +1,20 @@
-import logo from '../../assets/MyWallet.svg';
-import { Form, Input } from '../../components/FormComponents';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { required, maxLength, pattern } from '../../utils/reactHookFormConfig';
 import { ThreeDots } from 'react-loader-spinner';
 import 'react-toastify/dist/ReactToastify.css';
-import { required, maxLength, pattern } from '../../utils/reactHookFormConfig';
-import { services } from '../../services/services';
-import { toastError } from '../../components/toasts';
-import StyledLink from '../../components/StyledLink';
-import Button from '../../components/Button';
+import logo from '../../assets/MyWallet.svg';
 import AuthContext from '../../contexts/AuthContext';
-import SiteLogo from '../../components/SiteLogo';
+import { services } from '../../services/services';
+import {
+  Form,
+  Input,
+  toastError,
+  StyledLink,
+  Button,
+  SiteLogo,
+} from '../../components';
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);

@@ -12,8 +12,7 @@ import {
   Entries,
   Entry,
 } from './style.js';
-import TransactionsButtons from '../../components/IncomeExpenseButtons.js';
-import Header from '../../components/Header.js';
+import { Header, TransactionsButtons } from '../../components';
 
 export default function Transactions() {
   const [balance, setBalance] = useState();
@@ -52,11 +51,14 @@ export default function Transactions() {
 
       getUser();
     } catch (error) {
-      console.log(error.response);
       toastError(error.response.data);
     }
   }
-  console.log(balance);
+
+  async function navigateToEditPage(id, value) {
+    if (value >= 0) navigate(`/income/edit/${id}`);
+    else navigate(`/expense/edit/${id}`);
+  }
 
   if (!balance) return '';
   return (
@@ -78,7 +80,14 @@ export default function Transactions() {
                   key={transaction._id}
                 >
                   <span className='date'>{transaction.date}</span>
-                  <span className='description'>{transaction.description}</span>
+                  <span
+                    className='description'
+                    onClick={() =>
+                      navigateToEditPage(transaction._id, transaction.value)
+                    }
+                  >
+                    {transaction.description}
+                  </span>
                   <span className='value'>
                     {formatToMoney(transaction.value)}
                   </span>

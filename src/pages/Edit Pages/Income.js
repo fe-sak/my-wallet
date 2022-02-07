@@ -1,17 +1,18 @@
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { required, maxLength } from '../../utils/reactHookFormConfig';
 import { ThreeDots } from 'react-loader-spinner';
+import { Container, HeaderSpan } from './style.js';
 import AuthContext from '../../contexts/AuthContext.js';
 import { services } from '../../services/services.js';
-import { Container, HeaderSpan } from './style.js';
 import { Header, Button, Form, Input, toastError } from '../../components';
 
-export default function Income() {
+export default function EditIncome() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { auth } = useContext(AuthContext);
+  const { id } = useParams();
   const {
     register,
     handleSubmit,
@@ -26,7 +27,7 @@ export default function Income() {
   async function submitForm(formData) {
     try {
       setIsLoading(true);
-      await services.addIncome(auth, { ...formData });
+      await services.editTransaction(auth, id, { ...formData });
       setIsLoading(false);
       setTimeout(() => {
         navigate('/transactions');
@@ -40,7 +41,7 @@ export default function Income() {
   return (
     <Container>
       <Header>
-        <HeaderSpan>Nova entrada</HeaderSpan>
+        <HeaderSpan>Editar entrada</HeaderSpan>
       </Header>
       <Form onSubmit={handleSubmit((formData) => submitForm(formData))}>
         <Input
