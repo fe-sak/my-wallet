@@ -5,21 +5,6 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  span {
-    font: 700 26px 'raleway';
-    color: white;
-    display: block;
-  }
-
-  img {
-    width: 25px;
-  }
-`;
-
 const TransactionsContainer = styled.div`
   position: relative;
   width: 100%;
@@ -116,7 +101,6 @@ const IncomeExpenseButtonsContainer = styled.div`
 
 export {
   Container,
-  Header,
   TransactionsContainer,
   TransactionsFooter,
   Entries,

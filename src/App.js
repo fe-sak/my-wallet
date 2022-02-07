@@ -7,6 +7,8 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { ToastContainer } from 'react-toastify';
 import { AuthProvider } from './contexts/AuthContext';
 import Transactions from './pages/Transactions';
+import Income from './pages/Expense and Income/Income';
+import Expense from './pages/Expense and Income/Expense';
 export default function App() {
   return (
     <AuthProvider>
@@ -16,6 +18,8 @@ export default function App() {
             <Route path='/' element={<Login />} />
             <Route path='/signup' element={<SignUp />} />
             <Route path='/transactions' element={<Transactions />} />
+            <Route path='/income' element={<Income />} />
+            <Route path='/expense' element={<Expense />} />
           </Routes>
         </PageContainer>
         <ToastContainer />

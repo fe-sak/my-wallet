@@ -7,13 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import formatToMoney from '../../utils/formatToMoney.js';
 import {
   Container,
-  Header,
   TransactionsContainer,
   TransactionsFooter,
   Entries,
   Entry,
 } from './style.js';
 import TransactionsButtons from '../../components/IncomeExpenseButtons.js';
+import Header from '../../components/Header.js';
 
 export default function Transactions() {
   const [balance, setBalance] = useState();
@@ -73,9 +73,11 @@ export default function Transactions() {
                 </Entry>
               ))}
             </Entries>
-            <TransactionsFooter positive={balanceValue > 0 && true}>
+            <TransactionsFooter positive={balanceValue >= 0 && true}>
               <span id='balance'>saldo</span>
-              <span id='balanceValue'>{formatToMoney(balanceValue)}</span>
+              <span id='balanceValue'>
+                {formatToMoney(balanceValue && balanceValue)}
+              </span>
             </TransactionsFooter>
           </>
         )}

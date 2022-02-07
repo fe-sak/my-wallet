@@ -19,4 +19,14 @@ function getUser(token) {
   return axios.get(`${BASE_URL}/transactions`, config);
 }
 
-export const services = { signUp, login, getUser };
+function addIncome(token, body) {
+  const config = createConfig(token);
+  return axios.post(`${BASE_URL}/income`, body, config);
+}
+
+function addExpense(token, body) {
+  const config = createConfig(token);
+  return axios.post(`${BASE_URL}/expense`, body, config);
+}
+
+export const services = { signUp, login, getUser, addIncome, addExpense };
