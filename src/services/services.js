@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://fesak-my-wallet-backend.herokuapp.com';
+const BASE_URL = process.env.BASE_URL;
 
 function createConfig(token) {
   return { headers: { Authorization: `Bearer ${token}` } };

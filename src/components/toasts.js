@@ -27,6 +27,3 @@ export function toastSuccess(message) {
     className: 'toastStyle',
   });
 }
-
-const exportedObject = { toastError, toastSuccess };
-export default exportedObject;
