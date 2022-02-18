@@ -1,9 +1,9 @@
 
-This is a full stack web project, check the back-end ![here](="https://github.com/fe-sak/MyWallet_Back)
+This is a full stack web project, check the back-end [here](https://github.com/fe-sak/MyWallet_Back)
 
 # My Wallet
 
-<img src="https://media.giphy.com/media/62Yp8060L4xsbGPkYA/giphy.gif" alt='example of usage' />
+<img src="https://media.giphy.com/media/62Yp8060L4xsbGPkYA/giphy.gif" alt='' />
 
 You can use it right now [here!](https://my-wallet-front-five.vercel.app/)
 
