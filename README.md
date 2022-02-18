@@ -2,6 +2,8 @@
 # My Wallet
 
  [Deploy url](https://my-wallet-front-five.vercel.app/) 
+ 
+[Back-end GitHub](https://github.com/fe-sak/MyWallet_Back)
 
 <img src="https://media3.giphy.com/media/Hs9nhr4IAhIQBnNYyw/giphy.gif?cid=790b7611568b2c9c15bfad6cb5dcd5e8af30ba240892f326&rid=giphy.gif" alt='' />
 
@@ -13,7 +15,8 @@ This is My Wallet! A mobile web-page application to manage your financial transa
 
 ## Why?
 
-My first full stack project using everything I have learned so far
+I wanted to create a functional project using everything I have learned so far. So, here it is, my first full stack project!
+
 
 ## Functionalities
 
