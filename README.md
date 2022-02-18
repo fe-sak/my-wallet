@@ -55,7 +55,7 @@ $ cd MyWallet_Front
 
 **Installing dependencies**
 
-You need to install npm, learn more about it ![here](https://docs.npmjs.com/getting-started).
+You need to install npm, learn more about it [here](https://docs.npmjs.com/getting-started).
 Then, run the command inside the project directory: 
 ```
 $ yarn
