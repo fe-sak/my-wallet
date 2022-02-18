@@ -50,7 +50,7 @@ My first full stack project using everything I have learned so far
 
 ```
 $ git clone git@github.com:fe-sak/MyWallet_Front.git
-$ cd track-it
+$ cd MyWallet_Front
 ```
 
 **Installing dependencies**
