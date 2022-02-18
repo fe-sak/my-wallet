@@ -44,17 +44,19 @@ My first full stack project using everything I have learned so far
 ![MongoDB](https://img.shields.io/badge/-MongoDB-05122A?style=flat&logo=MongoDB)
 
 
-## How to install this app
+## How to install this app (front-end)
 
   **Cloning the Repository**
 
 ```
-$ git clone git@github.com:fe-sak/track-it.git
+$ git clone git@github.com:fe-sak/MyWallet_Front.git
 $ cd track-it
 ```
 
 **Installing dependencies**
 
+You need to install npm, learn more about it ![here](https://docs.npmjs.com/getting-started).
+Then, run the command inside the project directory: 
 ```
 $ yarn
 ```
