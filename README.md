@@ -1,11 +1,11 @@
 
-This is a full stack web project, check the back-end [here](https://github.com/fe-sak/MyWallet_Back)
-
 # My Wallet
 
-<img src="https://media.giphy.com/media/62Yp8060L4xsbGPkYA/giphy.gif" alt='' />
+ [Deploy url](https://my-wallet-front-five.vercel.app/) 
 
-You can use it right now [here!](https://my-wallet-front-five.vercel.app/)
+<img src="https://media3.giphy.com/media/Hs9nhr4IAhIQBnNYyw/giphy.gif?cid=790b7611568b2c9c15bfad6cb5dcd5e8af30ba240892f326&rid=giphy.gif" alt='' />
+
+Gif too fast? Slower version [here](https://streamable.com/yhkpo8)
 
 ## About this project
 
