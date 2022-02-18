@@ -11,7 +11,7 @@ Gif too fast? Slower version [here](https://streamable.com/yhkpo8)
 
 This is My Wallet! A mobile web-page application to manage your financial transactions
 
-### Why?
+## Why?
 
 My first full stack project using everything I have learned so far
 
