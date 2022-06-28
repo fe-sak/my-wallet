@@ -11,12 +11,7 @@ Gif too fast? Slower version [here](https://streamable.com/yhkpo8)
 
 ## About this project
 
-This is the My Wallet App! A mobile web page application to manage your financial transactions. Built with React and styled-components
-
-## Why?
-
-I wanted to create a functional project using everything I have learned so far. So, here it is, my first full stack project!
-
+A mobile web page application to manage your financial transactions. Built with React and styled-components
 
 ## Functionalities
 
